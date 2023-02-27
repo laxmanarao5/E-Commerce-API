@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "customer_name":"laxman",
-    "email":"abcde@gmail.com",
+    "email":"ala@gmail.com",
     "mobile":8367027220,
     "address":{
         "street":"main street",

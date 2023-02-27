@@ -34,7 +34,7 @@ exports.addCustomer=expressAsyncHandler(async(req,res)=>{
         email:req.body.email
     }})
     //if customer not found
-    if(result==undefined)
+    if(result==undefined )
     {
         await Customers.create(req.body,{
             include:[
@@ -47,11 +47,21 @@ exports.addCustomer=expressAsyncHandler(async(req,res)=>{
     }
     //If customer exists
     else{
+        let address_info=await result.getAddress()
+        res.send({res:address_info})
+        //check address available or not
+        if(address_info[0]!=null)
+        res.send({message:"User address already available"})
         // req.body.address.customer_id=result[0].customer_id
         // console.log(req.body)
-        let cust_address=await Address.create(req.body.address)
+
+        //
+        else{
+            let cust_address=await Address.create(req.body.address)
         result.setAddress(cust_address)
         res.send({message:"Address Updated sucessfully"})
+        }
+        
 
     }
 
