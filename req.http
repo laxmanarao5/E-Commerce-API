@@ -6,7 +6,7 @@ GET http://localhost/customer-api/test
 #Test Customer API
 GET http://localhost/product-api/test
 
-###
+### add customer
 
 POST http://localhost/customer-api/customer
 Content-Type: application/json
@@ -16,9 +16,18 @@ Content-Type: application/json
     "email":"lakshmana5296@gmail.com",
     "mobile":8367027220
 }
+### add customer
+ 
+POST http://localhost/customer-api/customer
+Content-Type: application/json
 
+{
+    "customer_name":"lokesh",
+    "email":"laxmana5296@gmail.com",
+    "mobile":9052083710
+}
 
-###
+### add product
 POST http://localhost/product-api/product
 Content-Type: application/json
 
@@ -27,7 +36,7 @@ Content-Type: application/json
     "product_price":90000
 }
 
-###
+### all product
 POST http://localhost/product-api/product
 Content-Type: application/json
 
@@ -37,10 +46,54 @@ Content-Type: application/json
 }
 
 
-###
+
+### Write an review
+POST http://localhost/customer-api/customer-review
+Content-Type: application/json
+
+{
+    "customer_id":2,
+    "product_id":2,
+    "rating":4,
+    "review_date":"2023-02-27",
+    "review_desc":"good"
+}
+
+
+###  Place an order
+POST http://localhost/customer-api/order
+Content-Type: application/json
+
+{
+    "customer_id":1,
+    "product_id":2,
+    "order_date":"2023-02-28"
+}
+###Get all customers
 
 GET http://localhost/customer-api/customers
 
-###
+### Get all products
 
 GET http://localhost/product-api/products
+
+
+###
+### get reviews by customer id
+
+GET http://localhost/customer-api/customer-reviews/2
+
+###
+
+###get orders by customer id
+
+GET http://localhost/customer-api/customer-orders/1
+
+###get orders by product id
+
+GET http://localhost/product-api/product-reviews/2
+
+
+###
+
+GET http://localhost/customer-api/customer-reviews/<customer_id>

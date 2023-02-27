@@ -6,17 +6,13 @@ const {DataTypes}=require("sequelize")
 const { timeStamp } = require("console")
 
 
-exports.Reviews=sequelize.define("reviews",{
-    review_id:{
+exports.Orders=sequelize.define("orders",{
+    order_id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
         autoIncrement:true
     },
-    rating:{
-        type:DataTypes.DOUBLE,
-        allowNull:false
-    },
-    review_desc:{
+    order_date:{
         type:DataTypes.STRING,
         allowNull:false
     }

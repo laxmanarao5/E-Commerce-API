@@ -14,9 +14,7 @@ app.listen(process.env.PORT || 80,()=>{
 
 
 //Test db connection
-
 const {sequelize}=require("./database/inventary.config")
-
 sequelize.authenticate()
 .then(()=>console.log("Connection sucess"))
 .catch(err=>console.log("Error occured : ",err))
@@ -24,23 +22,17 @@ sequelize.authenticate()
 
 //import customer API
 const customerApp=require("./routes/customers.routes")
-
 //Roting to customer API
 app.use("/customer-api",customerApp)
 
 
 //import Product API
 const productApp=require("./routes/products.routes")
-
 //Roting to Product API
 app.use("/product-api",productApp)
 
 
 
-//test model
-
-const Customers=require("./database/models/customers.model")
-const Products=require("./database/models/products.model")
 
 sequelize.sync()
 

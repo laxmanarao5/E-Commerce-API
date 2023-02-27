@@ -1,5 +1,7 @@
 //import db connection
 const {sequelize}=require("../inventary.config")
+//import bcrypt js
+const bcryptjs=require("bcryptjs")
 
 //import datatypes
 const {DataTypes}=require("sequelize")
