@@ -1,0 +1,46 @@
+#Test Customer API
+GET http://localhost/customer-api/test
+
+###
+
+#Test Customer API
+GET http://localhost/product-api/test
+
+###
+
+POST http://localhost/customer-api/customer
+Content-Type: application/json
+
+{
+    "customer_name":"laxman",
+    "email":"lakshmana5296@gmail.com",
+    "mobile":8367027220
+}
+
+
+###
+POST http://localhost/product-api/product
+Content-Type: application/json
+
+{
+    "product_name":"samsung s23",
+    "product_price":90000
+}
+
+###
+POST http://localhost/product-api/product
+Content-Type: application/json
+
+{
+    "product_name":"samsung s23 ultra",
+    "product_price":125000
+}
+
+
+###
+
+GET http://localhost/customer-api/customers
+
+###
+
+GET http://localhost/product-api/products
