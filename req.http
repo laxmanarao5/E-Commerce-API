@@ -13,6 +13,23 @@ Content-Type: application/json
 
 {
     "customer_name":"laxman",
+    "email":"abcde@gmail.com",
+    "mobile":8367027220,
+    "address":{
+        "street":"main street",
+        "city":"Narasannapeta",
+        "state":"AP",
+        "pincode":532429
+    }
+}
+
+### add customer
+
+POST http://localhost/customer-api/customer
+Content-Type: application/json
+
+{
+    "customer_name":"laxman",
     "email":"lakshmana5296@gmail.com",
     "mobile":8367027220
 }
@@ -97,3 +114,9 @@ GET http://localhost/product-api/product-reviews/2
 ###
 
 GET http://localhost/customer-api/customer-reviews/<customer_id>
+
+
+
+###
+
+GET http://192.168.27.27:4000/customer-api/customers

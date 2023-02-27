@@ -6,6 +6,10 @@ const {Customers}=require("../database/models/customers.model")
 const {Reviews}=require("../database/models/reviews.model")
 const {Products}=require("../database/models/products.model")
 const {Orders}=require("../database/models/orders.model")
+const {Address}=require("../database/models/address.model")
+
+//Association between customer and address
+Customers.Address=Customers.hasOne(Address,{foreignKey:"customer_id"})
 
 //Associations for Reviews
 Customers.Products=Customers.belongsToMany(Products,{through:Reviews,foreignKey:"customer_id"})
@@ -24,8 +28,35 @@ exports.testCustomer=(req,res)=>{
 
 //add customers
 exports.addCustomer=expressAsyncHandler(async(req,res)=>{
-    await Customers.create(req.body)
-    res.send({message:"Customer added sucessfully"})
+
+    //check Customer info in data
+    let result=await Customers.findOne({where:{
+        email:req.body.email
+    }})
+    //if customer not found
+    if(result==undefined)
+    {
+        await Customers.create(req.body,{
+            include:[
+                {
+                    association:Customers.Address
+                }
+            ]
+        })
+        res.send({message:"Customer added sucessfully"})
+    }
+    //If customer exists
+    else{
+        // req.body.address.customer_id=result[0].customer_id
+        // console.log(req.body)
+        let cust_address=await Address.create(req.body.address)
+        result.setAddress(cust_address)
+        res.send({message:"Address Updated sucessfully"})
+
+    }
+
+    
+    
 })
 
 //Write review
